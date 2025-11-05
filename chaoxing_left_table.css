@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    color: #181818; /* 侧边栏字体改为黑色 */
+    text-shadow: none;
+    min-height: 200vh; /* 用于测试滚动效果 */
+}
+
+/* 侧边栏容器 */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    /* background-color: #2D3748;  删除背景色 */
+    width: 60px; /* 收起时的宽度（仅显示图标） */
+    transition: width 0.3s ease;
+    overflow: hidden;
+    z-index: 1000;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 侧边栏所有 Font Awesome 图标变为黑色 */
+.sidebar .menu-icon,
+.sidebar .menu-arrow {
+    color: #000000 !important;
+}
+
+/* hover时展开 */
+.sidebar:hover {
+    width: 220px;
+}
+
+/* 菜单列表 */
+.menu-list {
+    list-style: none;
+    padding: 20px 0;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* 菜单项 */
+.menu-item {
+    position: relative;
+}
+
+/* 一级菜单 */
+.menu-item > .menu-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    color: #000000;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    user-select: none;
+}
+
+/* hover效果 */
+.menu-item > .menu-link:hover {
+    background-color: #4A5568;
+}
+
+/* 选中状态已删除 */
+
+/* 图标 */
+.menu-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-right: 12px;
+}
+
+/* 菜单文字 */
+.menu-text {
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    width: 0;
+    overflow: hidden;
+}
+
+/* hover时显示文字 */
+.sidebar:hover .menu-text {
+    opacity: 1;
+    width: auto;
+}
+
+/* 展开/收起箭头 */
+.menu-arrow {
+    margin-left: auto;
+    font-size: 12px;
+    transition: transform 0.2s ease;
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.sidebar:hover .menu-arrow {
+    opacity: 1;
+    width: auto;
+}
+
+.menu-item.expanded > .menu-link > .menu-arrow {
+    transform: rotate(90deg);
+}
+
+/* 子菜单容器 */
+.submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.menu-item.expanded > .submenu {
+    max-height: 500px; /* 足够大的值，确保子菜单完全展开 */
+}
+
+/* 子菜单项 */
+.submenu-item {
+    list-style: none;
+}
+
+.submenu-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px 10px 48px; /* 左侧缩进，与图标对齐 */
+    color: #000000;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.submenu-link:hover {
+    background-color: #4A5568;
+}
+
+/* 子菜单选中状态已删除 */
+
+/* 自定义滚动条 */
+.menu-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.menu-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.menu-list::-webkit-scrollbar-thumb {
+    background: #4A5568;
+    border-radius: 3px;
+}
+
+.menu-list::-webkit-scrollbar-thumb:hover {
+    background: #718096;
+}
+
+/* 内容区域（用于演示） */
+.content {
+    margin-left: 60px;
+    padding: 40px;
+    /* background: none;  移除背景色（如有） */
+}
+
+.content h1 {
+    margin-bottom: 20px;
+}
+
+.content p {
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
